@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CashQuest — Find a way to earn that fits you</title>
+<meta name="description" content="CashQuest helps you compare realistic ways to earn money based on your time, budget, interests and goals.">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#17191d;--muted:#646b75;--line:#e4e7eb;--accent:#2563eb;--accent2:#eff5ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:880px;margin:auto;padding:0 22px 70px}
+header{height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.5px}.brand span{color:var(--accent)}
+.header-link{color:var(--muted);font-size:14px}
+.hero{padding:72px 0 48px;max-width:700px}.eyebrow{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:14px}
+h1{font-size:clamp(40px,7vw,64px);line-height:1.02;letter-spacing:-2.5px;margin:0 0 20px}
+.lead{font-size:19px;line-height:1.6;color:var(--muted);max-width:650px;margin:0}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:24px;color:#727985;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:0 5px 25px rgba(20,25,35,.04)}
+.progress{height:5px;background:#edf0f3;border-radius:99px;margin-bottom:28px}.bar{height:100%;background:var(--accent);width:0;border-radius:99px;transition:.2s}
+.question{font-size:24px;font-weight:750;letter-spacing:-.5px;margin-bottom:18px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.option{background:white;border:1px solid #dfe3e8;border-radius:12px;padding:16px;text-align:left;font-size:15px;color:var(--ink);cursor:pointer}
+.option:hover{border-color:var(--accent);background:var(--accent2)}
+.note{font-size:12px;color:#858b94;margin-top:20px;line-height:1.5}
+.result{display:none}.result h2{font-size:32px;letter-spacing:-1px;margin:4px 0 12px}.result p{color:var(--muted);line-height:1.6}
+.resultbox{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:22px}
+.resultbox h3{margin:0 0 10px;font-size:17px}.resultbox li{margin:8px 0;color:#454b54;line-height:1.45}
+.offer{margin-top:22px;border-top:1px solid var(--line);padding-top:22px}
+.offer h3{margin:0 0 7px}.price{font-size:22px;font-weight:800;margin:10px 0}
+.cta{display:inline-block;background:var(--ink);color:white;text-decoration:none;padding:13px 18px;border-radius:10px;font-weight:700}
+.secondary{display:block;margin-top:14px;background:none;border:0;color:var(--muted);padding:0;cursor:pointer}
+section.info{padding:55px 0}.info h2{font-size:30px;letter-spacing:-1px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.infoitem{background:white;border:1px solid var(--line);border-radius:14px;padding:20px}.infoitem h3{margin:0 0 8px;font-size:16px}.infoitem p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+footer{border-top:1px solid var(--line);padding-top:24px;color:#858b94;font-size:12px;line-height:1.6}
+@media(max-width:650px){.options,.grid{grid-template-columns:1fr}.hero{padding-top:50px}.card{padding:22px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="brand">Cash<span>Quest</span></div><div class="header-link">A practical earning idea finder</div></header>
+
+<main>
+<section class="hero">
+<div class="eyebrow">FREE TEST</div>
+<h1>Find a way to earn that fits you.</h1>
+<p class="lead">Answer six quick questions about your time, budget, interests and goals. CashQuest gives you a practical starting point — without get-rich-quick promises.</p>
+<div class="trust"><span>✓ 6 questions</span><span>✓ No sign-up</span><span>✓ Results instantly</span></div>
+</section>
+
+<section class="card" id="quiz">
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div id="question"></div>
+<div class="options" id="options"></div>
+<div class="note">This test is for ideas and planning. Results are suggestions, not guarantees of income.</div>
+</section>
+
+<section class="card result" id="result">
+<div class="eyebrow">YOUR RESULT</div>
+<h2 id="title"></h2>
+<p id="intro"></p>
+<div class="resultbox"><h3>Where I'd start</h3><ul id="steps"></ul></div>
+<p id="target"></p>
+<div class="offer">
+<h3>Want a more detailed plan?</h3>
+<p>Get a longer 30-day plan, alternative options and a practical tool list.</p>
+<div class="price">$7.90</div>
+<a class="cta" href="#" onclick="alert('Demo: a real checkout can be connected here later.');return false;">View the plan</a>
+<div class="note">Demo only — no payment is taken in this version.</div>
+</div>
+<button class="secondary" onclick="restart()">← Take the test again</button>
+</section>
+
+<section class="info">
+<h2>What CashQuest does not promise</h2>
+<div class="grid">
+<div class="infoitem"><h3>No get-rich-quick claims</h3><p>We don't promise that any method will make you a specific amount of money.</p></div>
+<div class="infoitem"><h3>No magic trick</h3><p>Every real way of earning requires time, skill, effort or capital.</p></div>
+<div class="infoitem"><h3>Ideas, not financial advice</h3><p>The goal is to help you compare options and start small.</p></div>
+</div>
+</section>
+</main>
+
+<footer>CashQuest is an idea and planning tool. Before commercial launch, final business, privacy, consumer and payment information should be added.</footer>
+</div>
+
+<script>
+const qs=[
+["How much time do you have each week?",["Less than 3 hours","3–7 hours","8–15 hours","15+ hours"]],
+["How much can you spend to get started?",["$0","Under $50","$50–$200","$200+"]],
+["Which describes you best?",["Creative","Social","Technical","Hands-on"]],
+["What are you most interested in?",["Video & social media","Gaming","Cars & products","Computers"]],
+["You'd rather work...",["On your own","With a friend","With clients","Doesn't matter"]],
+["What's your first goal?",["My first $50","$100–$500/month","$500–$1,000/month","$1,000+/month"]]
+];
+
+let i=0,a=[];
+const q=document.getElementById("question"),o=document.getElementById("options"),bar=document.getElementById("bar");
+
+function render(){
+ const [text,choices]=qs[i];
+ q.innerHTML='<div class="question">'+(i+1)+"/"+qs.length+" — "+text+"</div>";
+ o.innerHTML="";
+ choices.forEach((c,n)=>{
+  const b=document.createElement("button");b.className="option";b.textContent=c;
+  b.onclick=()=>{a.push(n);i++;if(i<qs.length){bar.style.width=(i/qs.length*100)+"%";render()}else finish()};
+  o.appendChild(b);
+ });
+}
+function finish(){
+ document.getElementById("quiz").style.display="none";
+ document.getElementById("result").style.display="block";
+ let title="Local service",intro="With a small budget, a practical service can be one of the simplest ways to test whether people will pay for something you can do.",steps=[
+ "Choose one clear service you can deliver well.",
+ "Create one example or small pilot job.",
+ "Work out your costs and set a price before starting.",
+ "Get your first paying customer and use their feedback to improve."
+ ],target="First target: one real paying customer.";
+
+ if(a[2]===0){title="Video editing & content";intro="A creative profile and a small starting budget can work well for digital services.";steps=["Choose one editing tool and learn the basics.","Create three short sample videos.","Put the best examples into a simple portfolio.","Offer one clear service and aim for your first reference."];target="First target: your first $50–$100 project."}
+ if(a[2]===1){title="Sales & content";intro="If you enjoy working with people, communication and simple content services may be a good place to start.";steps=["Choose one easy-to-explain service.","Create one concrete example.","Practice a short pitch.","Test the service at a small price and collect feedback."];target="First target: one paying customer."}
+ if(a[2]===2){title="Digital product";intro="A technical profile can be a good fit for a small digital product that could eventually be sold more than once.";steps=["Find one small problem people want solved.","Build the simplest useful version.","Let a few people try it.","Fix the biggest problems before spending money on a bigger version."];target="First target: one user who is willing to pay."}
+
+ document.getElementById("title").textContent=title;
+ document.getElementById("intro").textContent=intro;
+ document.getElementById("target").textContent=target;
+ document.getElementById("steps").innerHTML=steps.map(x=>"<li>"+x+"</li>").join("");
+}
+function restart(){i=0;a=[];document.getElementById("result").style.display="none";document.getElementById("quiz").style.display="block";bar.style.width="0";render()}
+render();
+</script>
+</body>
+</html>
